@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="author" content="Lina González" />
+    <meta name="description" content="Alrededor de Colombia" />
+    <meta name="keywords" content="lugares de Colombia" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="stylesheet" href="./vendor/fonts/" />
+
+    <title>Around Colombia</title>
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <img
+          src="images/Header.png"
+          alt="logo alrededor de"
+          class="header__logo"
+        />
+
+        <section class="popoup">
+          <div class="popup__container">
+            <button class="popup__close">
+              <img
+                src="images/CloseIcon.svg"
+                alt="Icono de cerrar ventana"
+                class="popup__image"
+              />
+            </button>
+            <form class="form__popup">
+              <h3 class="form__tilte">Editar Perfil</h3>
+              <input
+                type="text"
+                placeholder="Nombre"
+                id="Nombre"
+                class="form__text"
+              />
+              <input
+                type="text"
+                placeholder="Acerca de mí"
+                id="Mí"
+                class="form__text"
+              />
+              <button type="submit" class="button__form">Guardar</button>
+            </form>
+          </div>
+        </section>
+        <section class="profile">
+          <img
+            src="images/Avatar.png"
+            alt="Foto Jacques Cousteau"
+            class="profile__image"
+          />
+          <div class="profile__data">
+            <h1 class="profile__title">Jacques Cousteau</h1>
+            <h2 class="profile__subtitle">Explorador</h2>
+          </div>
+
+          <button class="profile__button-small">
+            <img
+              src="images/Pen.png"
+              alt="imagen de lápiz"
+              class="profile__image-small"
+            />
+          </button>
+          <button class="profile__button">
+            <img
+              src="images/Button-Symbol.svg"
+              alt="símbolo adición"
+              class="button__add"
+            />
+          </button>
+        </section>
+      </header>
+
+      <section class="grid">
+        <ul class="gallery">
+          <li>
+            <div class="gallery__box">
+              <img
+                src="/images/ValledeCocora.jpg"
+                alt="imagen de palma de Cera"
+                class="gallery__image1"
+              />
+              <div class="gallery__info">
+                <h2 class="gallery__title">Valle de Cocora</h2>
+                <img
+                  src="images/like.svg"
+                  alt="imagen de corazón"
+                  class="gallery__icon"
+                />
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="gallery__box">
+              <img
+                src="/images/bahia-solano.jpg"
+                alt="Bahía Solano"
+                class="gallery__image2"
+              />
+              <div class="gallery__info">
+                <h2 class="gallery__title">Bahía Solano</h2>
+                <img
+                  src="images/like.svg"
+                  alt="imagen de corazón"
+                  class="gallery__icon"
+                />
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="gallery__box">
+              <img
+                src="/images/Caño-cristales.jpg"
+                alt="Caño Cristales"
+                class="gallery__image3"
+              />
+              <div class="gallery__info">
+                <h2 class="gallery__title">Caño Cristales</h2>
+                <img
+                  src="images/like.svg"
+                  alt="imagen de corazón"
+                  class="gallery__icon"
+                />
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="gallery__box">
+              <img
+                src="/images/CiudadPerdida.jpg"
+                alt="Ciudad Perdida Santa Marta"
+                class="gallery__image4"
+              />
+              <div class="gallery__info">
+                <h2 class="gallery__title">Ciudad Perdida</h2>
+                <img
+                  src="images/like.svg"
+                  alt="imagen de corazón"
+                  class="gallery__icon"
+                />
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="gallery__box">
+              <img
+                src="/images/parque-nacional-natural-utria.jpg"
+                alt="Parque Nacional de Utría"
+                class="gallery__image5"
+              />
+              <div class="gallery__info">
+                <h2 class="gallery__title">Parque Nacional de Utría</h2>
+                <img
+                  src="images/like.svg"
+                  alt="imagen de corazón"
+                  class="gallery__icon"
+                />
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="gallery__box">
+              <img
+                src="/images/Tatacoa.jpg"
+                alt="Desierto de la Tatacoa"
+                class="gallery__image6"
+              />
+              <div class="gallery__info">
+                <h2 class="gallery__title">Desierto de la Tatacoa</h2>
+                <img
+                  src="images/like.svg"
+                  alt="imagen de corazón"
+                  class="gallery__icon"
+                />
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <footer class="footer">&copy; 2024 Around Colombia</footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

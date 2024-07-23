@@ -1,0 +1,118 @@
+.popup {
+  background-color: black 0.5;
+}
+.popup__container {
+  position: fixed;
+  margin-left: 225px;
+  width: 430px;
+  height: 330px;
+  background-color: white;
+  border-radius: 10px;
+  /*display: none;*/
+}
+.popup__close {
+  position: absolute;
+  margin-top: 1px;
+  margin-left: 430px;
+  background-color: black;
+  opacity: 0.7;
+}
+.popup__image {
+  width: 40px;
+  margin-top: 1px;
+}
+
+.popup__image:hover {
+  color: aqua;
+}
+.form__popup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 358px;
+  margin-left: 36px;
+}
+.form__tilte {
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29.05px;
+  margin-bottom: 54px;
+  margin-top: 34px;
+  /*margin-left: 36px;*/
+  align-self: flex-start;
+}
+.form__text {
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19.94px;
+  width: 358px;
+  height: 27.26px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom-color: 1px solid #000000;
+  color: #c4c4c4;
+  margin-bottom: 29.74px;
+}
+
+.button__form {
+  width: 358px;
+  height: 50.15px;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21.78px;
+  border-radius: 2px;
+  border: 1px solid #c4c4c4;
+  color: #c4c4c4;
+  background-color: white;
+  margin-top: 18.26px;
+  margin-bottom: 36.51px;
+  background-color: #000000;
+}
+.button__form:hover {
+  background-color: #273746;
+}
+
+@media screen and (max-width: 320px) {
+  .popup__container {
+    width: 282px;
+    height: 322px;
+    margin-left: 19px;
+    margin-top: 100px;
+  }
+  .popup__close {
+    margin-top: -55px;
+    margin-left: 240px;
+  }
+  .popup__image {
+    width: 26px;
+  }
+  .form__popup {
+    width: 282px;
+    margin-left: 0;
+  }
+  .form__tilte {
+    font-size: 18px;
+    line-height: 21.78px;
+
+    margin: 25px 22px 76px;
+  }
+  .form__text {
+    line-height: 16.94px;
+    width: 238px;
+    height: 17px;
+    margin-bottom: 30px;
+  }
+
+  .button__form {
+    width: 238px;
+    height: 46px;
+    font-size: 14px;
+    line-height: 16.94px;
+    margin-top: 18.26px;
+  }
+}
