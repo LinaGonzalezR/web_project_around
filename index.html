@@ -8,7 +8,7 @@
     <meta name="description" content="Alrededor de Colombia" />
     <meta name="keywords" content="lugares de Colombia" />
     <link rel="stylesheet" href="./pages/index.css" />
-    <link rel="stylesheet" href="./vendor/fonts/" />
+    <link rel="stylesheet" href="./vendor/fonts.css" />
 
     <title>Around Colombia</title>
   </head>
@@ -21,16 +21,16 @@
           class="header__logo"
         />
 
-        <section class="popoup">
+        <section class="popup">
           <div class="popup__container">
-            <button class="popup__close">
-              <img
-                src="images/CloseIcon.svg"
-                alt="Icono de cerrar ventana"
-                class="popup__image"
-              />
-            </button>
             <form class="form__popup">
+              <button class="popup__close">
+                <img
+                  src="images/CloseIcon.svg"
+                  alt="Icono de cerrar ventana"
+                  class="popup__image"
+                />
+              </button>
               <h3 class="form__tilte">Editar Perfil</h3>
               <input
                 type="text"
@@ -38,6 +38,7 @@
                 id="Nombre"
                 class="form__text"
               />
+
               <input
                 type="text"
                 placeholder="Acerca de mí"
