@@ -76,12 +76,12 @@
 .button__add {
   width: 22px;
 }
-@media screen and (max-width: 880px) and (min-width: 641px) {
+@media screen and (max-width: 880px) and (min-width: 730px) {
   .profile__button-small {
     margin-right: 10px;
   }
 }
-@media screen and (max-width: 640px) and (min-width: 320px) {
+@media screen and (max-width: 729px) and (min-width: 320px) {
   .profile {
     max-width: 282px;
 

@@ -1,41 +1,139 @@
-let buttonProfile = document.querySelector(".profile__button-small");
-console.log(buttonProfile);
+const buttonProfile = document.querySelector(".profile__button-small");
+const popupProfile = document.querySelector(".popup");
+const buttonCloseProfile = document.querySelector(".popup__close");
 
-let popup = document.querySelector(".popup");
-console.log(popup);
+const buttonCard = document.querySelector(".profile__button");
+const popupCard = document.querySelector(".popup__card");
+const popupCloseCard = popupCard.querySelector(".popup__close");
 
-let buttonClose = document.querySelector(".popup__close");
-console.log(buttonClose);
+const form = document.querySelector(".form__popup");
+const inputName = document.querySelector("#input-nombre");
+const inputAbout = document.querySelector("#input-mi");
+const profileTitle = document.querySelector(".profile__title");
+const profileSubtitle = document.querySelector(".profile__subtitle");
 
-function handlerOpenPopup() {
-  popup.classList.add("popup-opened");
+const cardBox = document.querySelector(".card__box");
+const cardTemplate = document.querySelector("#card__template").content;
+
+const imagePopup = document.querySelector(".popup-image");
+const imagePopupContent = document.querySelector(".popup__image-big");
+const buttonCloseImagePopup = imagePopup.querySelector(".popup__close");
+
+const initialCards = [
+  {
+    name: "Valle de Cocora",
+    link: "./images/ValledeCocora.jpg",
+  },
+  {
+    name: "Bahía Solano",
+    link: "./images/bahia-solano.jpg",
+  },
+  {
+    name: "Caño Cristales",
+    link: "./images/Caño-cristales.jpg",
+  },
+  {
+    name: "Ciudad Perdida",
+    link: "./images/CiudadPerdida.jpg",
+  },
+  {
+    name: "Parque Nacional de Utría",
+    link: "./images/parque-nacional-natural-utria.jpg",
+  },
+  {
+    name: "Desierto de la Tatacoa",
+    link: "./images/Tatacoa.jpg",
+  },
+];
+
+function createCard(name, link) {
+  const card = cardTemplate.cloneNode(true);
+  const cardElment = card.querySelector(".card");
+  const cardImage = card.querySelector(".card__image");
+  const cardTitle = card.querySelector(".card__title");
+  const buttonLikeCard = card.querySelector(".card__like-icon");
+  const buttonDeleteCard = card.querySelector(".card__delete");
+
+  cardTitle.textContent = name;
+  cardImage.src = link;
+  cardImage.alt = name;
+
+  buttonLikeCard.addEventListener("click", function () {
+    buttonLikeCard.classList.toggle("card__like-icon_active");
+  });
+
+  buttonDeleteCard.addEventListener("click", function () {
+    cardElment.remove();
+  });
+  cardImage.addEventListener("click", function () {
+    openImagePopup(cardImage.src);
+  });
+  cardBox.prepend(card);
 }
-/*handlerOpenPopup();*/
 
-buttonProfile.addEventListener("click", handlerOpenPopup);
+initialCards.forEach(function (item) {
+  createCard(item.name, item.link);
+});
 
-console.log("Open");
-
-function handlerClosePopup() {
-  console.log("Close");
+function handlerOpenPopupProfile() {
+  popupProfile.classList.add("popup-opened");
 }
-/*handlerClosePopup();*/
+function handlerOpenPopupCard() {
+  popupCard.classList.add("popup-opened");
+}
+function handlerClosePopupProfile() {
+  popupProfile.classList.remove("popup-opened");
+}
 
-buttonClose.addEventListener("click", handlerClosePopup);
-/*popup.classList.add("popup");*/
+function handlerClosePopupCard() {
+  popupCard.classList.remove("popup-opened");
+}
 
-console.log("cerrar");
-
-let submit = document.querySelector(".button__form");
-console.log(submit);
+buttonProfile.addEventListener("click", handlerOpenPopupProfile);
+buttonCard.addEventListener("click", handlerOpenPopupCard);
+buttonCloseProfile.addEventListener("click", handlerClosePopupProfile);
+popupCloseCard.addEventListener("click", handlerClosePopupCard);
 
 function handlerSubmit(event) {
-  eventPreventDefault;
+  event.preventDefault();
+  profileTitle.textContent = inputName.value;
+  profileSubtitle.textContent = inputAbout.value;
+  handlerClosePopupProfile();
 }
-let data1 = document.getElementById("Nombre");
-console.log(data1);
-let data2 = document.getElementById("Mí");
-console.log(data2);
-data1.addEventListener(submit, handlerSubmit(events));
-/*data2.addEventListener(submit, function());*/
-events.PreventDefault;
+
+form.addEventListener("submit", handlerSubmit);
+
+const formCard = document.querySelector(".form__popup-card");
+const inputTitleCard = document.querySelector("#input-title");
+const inputLinkCard = document.querySelector("#input-link");
+
+function handlerAddCard(event) {
+  event.preventDefault();
+  const title = inputTitleCard.value;
+  const link = inputLinkCard.value;
+  createCard(title, link);
+  formCard.reset();
+  handlerClosePopupCard();
+}
+
+formCard.addEventListener("submit", handlerAddCard);
+
+function openImagePopup(imgsrc) {
+  imagePopupContent.src = imgsrc;
+  imagePopup.classList.add("popup-opened");
+}
+
+function closeImagePopup() {
+  imagePopup.classList.remove("popup-opened");
+  imagePopupContent.src = "";
+}
+
+buttonCloseImagePopup.addEventListener("click", closeImagePopup);
+
+const cardImages = document.querySelectorAll(".card__image");
+
+cardImages.forEach(function (image) {
+  image.addEventListener("click", function () {
+    openImagePopup(image.src);
+  });
+});

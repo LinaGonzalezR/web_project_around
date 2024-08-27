@@ -31,22 +31,62 @@
                   class="popup__image"
                 />
               </button>
-              <h3 class="form__tilte">Editar Perfil</h3>
+              <h3 class="form__title">Editar Perfil</h3>
               <input
                 type="text"
                 placeholder="Nombre"
-                id="Nombre"
+                id="input-nombre"
                 class="form__text"
               />
 
               <input
                 type="text"
                 placeholder="Acerca de mí"
-                id="Mí"
+                id="input-mi"
                 class="form__text"
               />
               <button type="submit" class="button__form">Guardar</button>
             </form>
+          </div>
+        </section>
+        <section class="popup__card">
+          <div class="popup__container">
+            <form class="form__popup-card">
+              <button class="popup__close">
+                <img
+                  src="images/CloseIcon.svg"
+                  alt="Icono de cerrar ventana"
+                  class="popup__image"
+                />
+              </button>
+              <h3 class="form__title">Nuevo lugar</h3>
+              <input
+                type="text"
+                placeholder="Titulo"
+                id="input-title"
+                class="form__text"
+              />
+
+              <input
+                type="url"
+                placeholder="Enlace de la imagen"
+                id="input-link"
+                class="form__text"
+              />
+              <button type="submit" class="button__form">Crear</button>
+            </form>
+          </div>
+        </section>
+        <section class="popup popup-image">
+          <div class="popup__content">
+            <img class="popup__image-big" alt="Imagen ampliada" src="" />
+            <button class="popup__close">
+              <img
+                src="images/CloseIcon.svg"
+                alt="Icono de cerrar ventana"
+                class="popup__image-close-icon"
+              />
+            </button>
           </div>
         </section>
         <section class="profile">
@@ -77,116 +117,24 @@
         </section>
       </header>
 
-      <section class="grid">
-        <ul class="gallery">
-          <li>
-            <div class="gallery__box">
-              <img
-                src="/images/ValledeCocora.jpg"
-                alt="imagen de palma de Cera"
-                class="gallery__image1"
-              />
-              <div class="gallery__info">
-                <h2 class="gallery__title">Valle de Cocora</h2>
-                <img
-                  src="images/like.svg"
-                  alt="imagen de corazón"
-                  class="gallery__icon"
-                />
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="gallery__box">
-              <img
-                src="/images/bahia-solano.jpg"
-                alt="Bahía Solano"
-                class="gallery__image2"
-              />
-              <div class="gallery__info">
-                <h2 class="gallery__title">Bahía Solano</h2>
-                <img
-                  src="images/like.svg"
-                  alt="imagen de corazón"
-                  class="gallery__icon"
-                />
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="gallery__box">
-              <img
-                src="/images/Caño-cristales.jpg"
-                alt="Caño Cristales"
-                class="gallery__image3"
-              />
-              <div class="gallery__info">
-                <h2 class="gallery__title">Caño Cristales</h2>
-                <img
-                  src="images/like.svg"
-                  alt="imagen de corazón"
-                  class="gallery__icon"
-                />
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="gallery__box">
-              <img
-                src="/images/CiudadPerdida.jpg"
-                alt="Ciudad Perdida Santa Marta"
-                class="gallery__image4"
-              />
-              <div class="gallery__info">
-                <h2 class="gallery__title">Ciudad Perdida</h2>
-                <img
-                  src="images/like.svg"
-                  alt="imagen de corazón"
-                  class="gallery__icon"
-                />
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <div class="gallery__box">
-              <img
-                src="/images/parque-nacional-natural-utria.jpg"
-                alt="Parque Nacional de Utría"
-                class="gallery__image5"
-              />
-              <div class="gallery__info">
-                <h2 class="gallery__title">Parque Nacional de Utría</h2>
-                <img
-                  src="images/like.svg"
-                  alt="imagen de corazón"
-                  class="gallery__icon"
-                />
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="gallery__box">
-              <img
-                src="/images/Tatacoa.jpg"
-                alt="Desierto de la Tatacoa"
-                class="gallery__image6"
-              />
-              <div class="gallery__info">
-                <h2 class="gallery__title">Desierto de la Tatacoa</h2>
-                <img
-                  src="images/like.svg"
-                  alt="imagen de corazón"
-                  class="gallery__icon"
-                />
-              </div>
-            </div>
-          </li>
-        </ul>
-      </section>
+      <section class="card__box"></section>
 
       <footer class="footer">&copy; 2024 Around Colombia</footer>
     </div>
+    <template id="card__template"
+      ><div class="card">
+        <img
+          class="card__delete"
+          src="/images/trashIcon.svg"
+          alt="Eliminar Carta"
+        />
+        <img class="card__image" src="" alt="" />
+        <div class="card__info">
+          <h2 class="card__title"></h2>
+          <img class="card__like-icon" src="./images/like.svg" alt="Corazon" />
+        </div>
+      </div>
+    </template>
     <script src="script.js"></script>
   </body>
 </html>
