@@ -137,3 +137,42 @@ cardImages.forEach(function (image) {
     openImagePopup(image.src);
   });
 });
+function openPopup(popup) {
+  popup.classList.add("popup-opened");
+}
+function closePopup(popup) {
+  popup.classList.remove("popup-opened");
+}
+function closePopupOverlayClick(popup) {
+  popup.addEventListener("click", (evt) => {
+    if (evt.target.classList.contains("popup")) {
+      closePopup(popup);
+    }
+  });
+}
+const popoups = document.querySelectorAll(".popup");
+popoups.forEach((popup) => {
+  closePopupOverlayClick(popup);
+});
+const closeButtons = document.querySelectorAll(".popup__close");
+closeButtons.forEach((button) => {
+  button.addEventListener("click", (evt) => {
+    const popup = button.closest(".popup");
+    closePopup(popup);
+  });
+});
+function closePopupEsc(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".popup-opened");
+    if (openedPopup) {
+      closePopup(openedPopup);
+    }
+  }
+}
+document.addEventListener("keydown", closePopupEsc);
+///function closePopup(popup) {
+///popup.classList.remove("popup-opened");
+///}
+///function openPopup(popup) {
+///  popup.classList.add("pop-opened");
+///}

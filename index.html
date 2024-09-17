@@ -23,7 +23,7 @@
 
         <section class="popup">
           <div class="popup__container">
-            <form class="form__popup">
+            <form class="form" name="form1" novalidate>
               <button class="popup__close">
                 <img
                   src="images/CloseIcon.svg"
@@ -36,22 +36,35 @@
                 type="text"
                 placeholder="Nombre"
                 id="input-nombre"
-                class="form__text"
+                class="form__input"
+                minlength="2"
+                maxlength="40"
+                required
               />
-
+              <span class="form__input-error input-nombre-error"
+                >Por favor complete este campo</span
+              >
               <input
                 type="text"
                 placeholder="Acerca de mí"
                 id="input-mi"
-                class="form__text"
+                class="form__input"
+                minlength="2"
+                maxlength="200"
+                required
               />
-              <button type="submit" class="button__form">Guardar</button>
+              <span class="form__input-error input-mi-error"
+                >Por favor complete este campo</span
+              >
+              <button type="submit" class="button__form button__form_disabled">
+                Guardar
+              </button>
             </form>
           </div>
         </section>
         <section class="popup__card">
           <div class="popup__container">
-            <form class="form__popup-card">
+            <form class="form" name="form2" novalidate>
               <button class="popup__close">
                 <img
                   src="images/CloseIcon.svg"
@@ -64,16 +77,28 @@
                 type="text"
                 placeholder="Titulo"
                 id="input-title"
-                class="form__text"
+                class="form__input"
+                minlength="2"
+                maxlength="30"
+                required
               />
+              <span class="form__input-error input-title-error"
+                >Por favor complete este campo</span
+              >
 
               <input
                 type="url"
                 placeholder="Enlace de la imagen"
                 id="input-link"
-                class="form__text"
+                class="form__input"
+                required
               />
-              <button type="submit" class="button__form">Crear</button>
+              <span class="form__input-error input-link-error"
+                >Ingrese una dirección URL válida</span
+              >
+              <button type="submit" class="button__form button__form_disabled">
+                Crear
+              </button>
             </form>
           </div>
         </section>
@@ -136,5 +161,6 @@
       </div>
     </template>
     <script src="scripts/script.js"></script>
+    <script src="scripts/validation.js"></script>
   </body>
 </html>
