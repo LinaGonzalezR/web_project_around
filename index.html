@@ -23,7 +23,7 @@
 
         <section class="popup">
           <div class="popup__container">
-            <form class="form" name="form1" novalidate>
+            <form class="form" name="form1" id="form1" novalidate>
               <button class="popup__close">
                 <img
                   src="images/CloseIcon.svg"
@@ -41,9 +41,7 @@
                 maxlength="40"
                 required
               />
-              <span class="form__input-error input-nombre-error"
-                >Por favor complete este campo</span
-              >
+              <span class="form__input-error input-nombre-error"></span>
               <input
                 type="text"
                 placeholder="Acerca de mí"
@@ -53,18 +51,16 @@
                 maxlength="200"
                 required
               />
-              <span class="form__input-error input-mi-error"
-                >Por favor complete este campo</span
-              >
+              <span class="form__input-error input-mi-error"></span>
               <button type="submit" class="button__form button__form_disabled">
                 Guardar
               </button>
             </form>
           </div>
         </section>
-        <section class="popup__card">
+        <section class="popup popup__card">
           <div class="popup__container">
-            <form class="form" name="form2" novalidate>
+            <form class="form" name="form2" id="form2" novalidate>
               <button class="popup__close">
                 <img
                   src="images/CloseIcon.svg"
@@ -82,9 +78,7 @@
                 maxlength="30"
                 required
               />
-              <span class="form__input-error input-title-error"
-                >Por favor complete este campo</span
-              >
+              <span class="form__input-error input-title-error"></span>
 
               <input
                 type="url"
@@ -93,9 +87,7 @@
                 class="form__input"
                 required
               />
-              <span class="form__input-error input-link-error"
-                >Ingrese una dirección URL válida</span
-              >
+              <span class="form__input-error input-link-error"></span>
               <button type="submit" class="button__form button__form_disabled">
                 Crear
               </button>

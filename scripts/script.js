@@ -6,7 +6,7 @@ const buttonCard = document.querySelector(".profile__button");
 const popupCard = document.querySelector(".popup__card");
 const popupCloseCard = popupCard.querySelector(".popup__close");
 
-const form = document.querySelector(".form__popup");
+const form = document.querySelector("#form1");
 const inputName = document.querySelector("#input-nombre");
 const inputAbout = document.querySelector("#input-mi");
 const profileTitle = document.querySelector(".profile__title");
@@ -103,7 +103,7 @@ function handlerSubmit(event) {
 
 form.addEventListener("submit", handlerSubmit);
 
-const formCard = document.querySelector(".form__popup-card");
+const formCard = document.querySelector("#form2");
 const inputTitleCard = document.querySelector("#input-title");
 const inputLinkCard = document.querySelector("#input-link");
 
