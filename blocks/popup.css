@@ -9,23 +9,9 @@
   align-items: center;
   display: none;
   z-index: 3;
-  /*opacity: 0;
-  visibility: hidden;
-  display: flex;*/
+
   margin: auto;
 }
-
-/*.popup__card {
-  background-color: rgba(0, 0, 0, 0.52);
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  display: none;
-}*/
 
 .popup-opened {
   display: flex;
@@ -38,15 +24,10 @@
   background-color: white;
   border-radius: 10px;
   position: relative;
-}
-
-.form__popup {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 358px;
-  margin-left: 36px;
 }
 
 .form__popup-card {
@@ -57,14 +38,14 @@
   width: 358px;
   margin-left: 36px;
 }
-/*.form {
+
+.form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 358px;
-  margin-left: 36px;
-}*/
+}
 .popup__close {
   position: absolute;
   top: -50px;
@@ -99,7 +80,7 @@
   line-height: 29.05px;
   margin-bottom: 54px;
   margin-top: 34px;
-  align-self: flex-start;
+  align-self: center;
 }
 
 .form__input {
@@ -114,6 +95,7 @@
   border-right: none;
   border-bottom-color: #000000;
   color: #c4c4c4;
+  margin: auto;
   margin-bottom: 29.74px;
 }
 .form__input-error {
@@ -141,6 +123,7 @@
   border: 1px solid #c4c4c4;
   color: #c4c4c4;
   background-color: white;
+  margin: auto;
   margin-top: 18.26px;
   margin-bottom: 36.51px;
   background-color: #000000;
@@ -152,12 +135,8 @@
   background-color: black;
   opacity: 20;
   color: #cccccc;
-
   opacity: 0.5;
 }
-
-/*.button__form_disabled:hover {
-}*/
 
 @media screen and (max-width: 880px) and (min-width: 641px) {
 }
