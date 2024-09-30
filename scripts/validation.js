@@ -56,13 +56,7 @@ const setEventListeners = (formElement, settings) => {
     });
   });
 };
-formElement.addEventListener("keydown", (evt) => {
-  if (evt.key === "Enter") {
-    if (hasInvalidInput(inputList)) {
-      evt.preventDefault();
-    }
-  }
-});
+
 function enableValidation(settings) {
   const formList = Array.from(document.querySelectorAll(settings.formSelector));
 
@@ -73,17 +67,6 @@ function enableValidation(settings) {
 
     setEventListeners(formElement, settings);
   });
-}
-
-const form = document.querySelectorAll(".form");
-const inactiveButton = form.document.querySelectorAll(".button__form_disabled");
-
-function inactiveButtonClass() {
-  if (form.checkInputValidity()) {
-    inactiveButton.disabled = false;
-  } else {
-    inactiveButton.disabled = true;
-  }
 }
 
 enableValidation({
