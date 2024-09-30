@@ -172,3 +172,10 @@ function closePopupEsc(evt) {
   }
 }
 document.addEventListener("keydown", closePopupEsc);
+buttonCloseImagePopup.addEventListener("click", (evt) => {
+  if (hasInvalidInput(inputList)) {
+    evt.preventDefault();
+  } else {
+    closeImagePopup();
+  }
+});
