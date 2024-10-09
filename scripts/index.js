@@ -1,3 +1,6 @@
+import Card from "./Card.js";
+import FormValidation from "./FormValidator.js";
+
 const buttonProfile = document.querySelector(".profile__button-small");
 const popupProfile = document.querySelector(".popup");
 const buttonCloseProfile = document.querySelector(".popup__close");
