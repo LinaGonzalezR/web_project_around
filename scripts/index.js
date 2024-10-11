@@ -49,6 +49,23 @@ const initialCards = [
   },
 ];
 
+const settings = {
+  formSelector: ".form",
+  inputSelector: ".form__input",
+  submitButtonSelector: ".button__form",
+  inactiveButtonClass: "button__form_disabled",
+  inputErrorClass: "form__input-error",
+  errorClass: "form__input-error_active",
+};
+
+const profileForm = document.querySelector("#form1");
+const profileFormValidation = new FormValidation(profileForm, settings);
+profileFormValidation.enableValidation();
+
+const cardForm = document.querySelector("#form2");
+const cardFormValidation = new FormValidation(cardForm, settings);
+cardFormValidation.enableValidation();
+
 function createCard(name, link) {
   const card = cardTemplate.cloneNode(true);
   const cardElment = card.querySelector(".card");

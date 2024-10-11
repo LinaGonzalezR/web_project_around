@@ -7,17 +7,6 @@ export default class Card {
 
   _getTemplate() {
     return cardtemplate.querySelector(".card").cloneNode(true);
-
-    /*const cardtemplate = document
-      .querySelector(".card__template")
-      .textContent.querySelector(".card")
-      .cloneNode(true); */ //const cardTemplate =
-    //querySelector("#card__template");
-    /*const card = template.querySelector
-    const image = card.querySelector(".card__image");
-    const info = card.querySelector(".card__info");*/
-
-    ///return cardtemplate();
   }
 
   toggleLike() {
@@ -60,10 +49,3 @@ export default class Card {
     return this.htmlCard;
   }
 }
-
-/*initialCards.forEach((item) => {
-  const card = new Card(item, ".card__template");
-  const cardElement = card.generateCard();
-
-  document.body.append(cardElement);
-});*/

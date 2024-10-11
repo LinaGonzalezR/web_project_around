@@ -68,12 +68,3 @@ function enableValidation(settings) {
     setEventListeners(formElement, settings);
   });
 }
-
-enableValidation({
-  formSelector: ".form",
-  inputSelector: ".form__input",
-  submitButtonSelector: ".button__form",
-  inactiveButtonClass: "button__form_disabled",
-  inputErrorClass: "form__input-error",
-  errorClass: "form__input-error_active",
-});

@@ -1,6 +1,8 @@
 export default class FormValidation {
   constructor(formElement, settings) {
-    (this.formElement = formElement), (this.settings = settings);
+    this.formElement = formElement;
+    this.settings = settings;
+    this.buttonElement = this.formElement.querySelector(".button__form");
   }
 
   showInputError(inputElement, errorMessage) {
@@ -20,6 +22,7 @@ export default class FormValidation {
   }
 
   checkInputValidity(inputElement) {
+    console.log("validarInput");
     if (!inputElement.validity.valid) {
       this.showInputError(inputElement, inputElement.validationMessage);
     } else {
@@ -31,29 +34,30 @@ export default class FormValidation {
     return inputList.some((inputElement) => !inputElement.validity.valid);
   }
 
-  toggleButtonState(inputList) {
-    if (hasInvalidInput(inputList)) {
-      buttonElement.classList.add(this.settings.inactiveButtonClass);
-      buttonElement.disabled = true;
+  toggleButtonState() {
+    if (this.hasInvalidInput(this.inputList)) {
+      this.buttonElement.classList.add(this.settings.inactiveButtonClass);
+      this.buttonElement.disabled = true;
     } else {
-      buttonElement.classList.remove(this.settings.inactiveButtonClass);
-      buttonElement.disabled = false;
+      this.buttonElement.classList.remove(this.settings.inactiveButtonClass);
+      this.buttonElement.disabled = false;
     }
   }
 
   setEventListeners() {
     this.inputList = Array.from(
-      this.formElement.querySelectorAll(this.settings.formSelector)
+      this.formElement.querySelectorAll(this.settings.inputSelector)
     );
     this.inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
-        this.checkInputValidity();
+        this.checkInputValidity(inputElement);
         this.toggleButtonState();
       });
     });
   }
 
   enableValidation() {
+    console.log("validacionAct");
     this.formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
     });
