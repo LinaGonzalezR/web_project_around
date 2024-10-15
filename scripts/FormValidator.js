@@ -48,6 +48,8 @@ export default class FormValidation {
     this.inputList = Array.from(
       this.formElement.querySelectorAll(this.settings.inputSelector)
     );
+    this.toggleButtonState();
+
     this.inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         this.checkInputValidity(inputElement);
