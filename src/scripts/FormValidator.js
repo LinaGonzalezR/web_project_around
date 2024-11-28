@@ -59,7 +59,6 @@ export default class FormValidation {
   }
 
   enableValidation() {
-    console.log("validacionAct");
     this.formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
     });

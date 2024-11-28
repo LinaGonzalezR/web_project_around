@@ -7,8 +7,6 @@
     <meta name="author" content="Lina González" />
     <meta name="description" content="Alrededor de Colombia" />
     <meta name="keywords" content="lugares de Colombia" />
-    <link rel="stylesheet" href="./pages/index.css" />
-    <link rel="stylesheet" href="./vendor/fonts.css" />
 
     <title>Around Colombia</title>
   </head>
@@ -16,18 +14,19 @@
     <div class="page">
       <header class="header">
         <img
-          src="images/Header.png"
+          src="<%=require('./images/Header.png')%>"
           alt="logo alrededor de"
           class="header__logo"
         />
 
-        <section class="popup">
+        <section class="popup" id="popup-profile">
           <div class="popup__container">
             <form class="form" name="form1" id="form1" novalidate>
               <div class="popup__close">
                 <img
-                  src="images/CloseIcon.svg"
-                  alt="Icono de cerrar ventana"
+                  src="<%=require('./images/CloseIcon.svg')%>"
+                  alt="Icono de
+                cerrar ventana"
                   class="popup__image"
                 />
               </div>
@@ -58,12 +57,12 @@
             </form>
           </div>
         </section>
-        <section class="popup popup__card">
+        <section class="popup popup__card" id="popup-card">
           <div class="popup__container">
             <form class="form" name="form2" id="form2">
               <div class="popup__close">
                 <img
-                  src="images/CloseIcon.svg"
+                  src="<%=require('./images/CloseIcon.svg')%>"
                   alt="Icono de cerrar ventana"
                   class="popup__image"
                 />
@@ -94,12 +93,12 @@
             </form>
           </div>
         </section>
-        <section class="popup popup-image">
+        <section class="popup popup-image" id="popup-image">
           <div class="popup__content">
             <img class="popup__image-big" alt="Imagen ampliada" src="" />
             <button class="popup__close">
               <img
-                src="images/CloseIcon.svg"
+                src="<%=require('./images/CloseIcon.svg')%>"
                 alt="Icono de cerrar ventana"
                 class="popup__image-close-icon"
               />
@@ -108,7 +107,7 @@
         </section>
         <section class="profile">
           <img
-            src="images/Avatar.png"
+            src="<%=require('./images/Avatar.png')%>"
             alt="Foto Jacques Cousteau"
             class="profile__image"
           />
@@ -119,14 +118,14 @@
 
           <button class="profile__button-small">
             <img
-              src="images/Pen.png"
+              src="<%=require('./images/Pen.png')%>"
               alt="imagen de lápiz"
               class="profile__image-small"
             />
           </button>
           <button class="profile__button">
             <img
-              src="images/Button-Symbol.svg"
+              src="<%=require('./images/Button-Symbol.svg')%>"
               alt="símbolo adición"
               class="button__add"
             />
@@ -142,7 +141,7 @@
       ><div class="card">
         <img
           class="card__delete"
-          src="/images/trashIcon.svg"
+          src="<%=require('./images/trashIcon.svg')%>"
           alt="Eliminar Carta"
         />
         <img class="card__image" src="" alt="" />
@@ -152,6 +151,5 @@
         </div>
       </div>
     </template>
-    <script src="scripts/index.js" type="module"></script>
   </body>
 </html>
