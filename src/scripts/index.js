@@ -55,7 +55,10 @@ const popupProfile = new PopupWithForm("#popup-profile", (inputValues) => {
 });
 
 const popupCard = new PopupWithForm("#popup-card", (inputValues) => {
-  const newCard = createCard(inputValues.title, inputValues.link);
+  const newCard = createCard(
+    inputValues["input-title"],
+    inputValues["input-link"]
+  );
   cardContainer.addItem(newCard);
   popupCard.close();
 });
