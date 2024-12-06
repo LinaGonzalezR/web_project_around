@@ -26,6 +26,7 @@ export default class Card {
     this.cardImage.addEventListener("click", () => {
       this._handleCardClick(this._name, this._link);
     });
+
     this.buttonLikeCard.addEventListener("click", () => {
       this.toggleLike();
     });

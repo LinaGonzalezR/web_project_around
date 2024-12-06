@@ -31,6 +31,8 @@ const initialCards = [
   { name: "Desierto de la Tatacoa", link: Tatacoa },
 ];
 
+const popupImage = new PopupWithImage("#popup-image");
+
 const cardContainer = new Section(
   {
     items: initialCards,
@@ -48,7 +50,6 @@ const userInfo = new UserInfo({
   aboutSelector: ".profile__subtitle",
 });
 
-const popupImage = new PopupWithImage("#popup-image");
 const popupProfile = new PopupWithForm("#popup-profile", (inputValues) => {
   userInfo.setUserInfo(inputValues.nombre, inputValues.mi);
   popupProfile.close();
@@ -63,10 +64,11 @@ const popupCard = new PopupWithForm("#popup-card", (inputValues) => {
   popupCard.close();
 });
 
-function createCard(_name, _link) {
-  /*console.log("link de la Imagen", _link);*/
-  const card = new Card(_name, _link, (_name, _link) => {
-    popupImage.open(_name, _link);
+function createCard(name, link) {
+  console.log("link de la Imagen");
+  const card = new Card(name, link, (name, link) => {
+    popupImage.open(name, link);
+    console.log("abriendo popup con:", name, link);
   });
   return card.generateCard();
 }
@@ -94,4 +96,4 @@ function setupFormValidations() {
   profileFormValidation.enableValidation();
   cardFormValidation.enableValidation();
 }
-setupFormValidations();
+/*setupFormValidations();*/
