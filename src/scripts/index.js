@@ -46,12 +46,12 @@ const cardContainer = new Section(
 cardContainer.renderer();
 
 const userInfo = new UserInfo({
-  nameSelector: ".profile__title",
-  aboutSelector: ".profile__subtitle",
+  name: ".profile__title",
+  job: ".profile__subtitle",
 });
 
 const popupProfile = new PopupWithForm("#popup-profile", (inputValues) => {
-  userInfo.setUserInfo(inputValues.nombre, inputValues.mi);
+  userInfo.setUserInfo(inputValues.name, inputValues.job);
   popupProfile.close();
 });
 
@@ -97,3 +97,17 @@ function setupFormValidations() {
   cardFormValidation.enableValidation();
 }
 /*setupFormValidations();*/
+
+const inputs = document.querySelectorAll(".form__input");
+
+inputs.forEach((input) => {
+  input.addEventListener("input", () => {
+    if (input.checkValidity()) {
+      input.classList.add("form__input-valid");
+      input.classList.remove("form__input-error_active");
+    } else {
+      input.classList.add("form__input-error_active");
+      input.classList.remove("form__input-valid");
+    }
+  });
+});
