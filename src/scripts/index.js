@@ -5,6 +5,7 @@ import Section from "./Section.js";
 import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
 import UserInfo from "./UserInfo.js";
+import API from "./Api.js";
 
 import valle from "../images/ValledeCocora.jpg";
 import bahia from "../images/bahia-solano.jpg";
@@ -12,6 +13,34 @@ import cano from "../images/Caño-cristales.jpg";
 import ciudad from "../images/CiudadPerdida.jpg";
 import utria from "../images/parque-nacional-natural-utria.jpg";
 import Tatacoa from "../images/Tatacoa.jpg";
+
+const api = new API("https://around-api.es.tripleten-services.com/v1", {
+  authorization: "84c92671-b7c6-44a0-a71f-a5067b81eea7",
+  "Content-Type": "application/json",
+});
+console.log(api);
+
+api
+  .getUserInfo()
+  .then((data) => {
+    userInfo.setUserInfo(data.name, data.about, data.avatar);
+  })
+  .catch((err) => {
+    console.log("Error Info Usuario", err);
+  });
+
+api
+  .getCards()
+  .then((cards) => {
+    console.log("Tarjetas Recibidas", cards);
+    cards.forEach((card) => {
+      const cardElement = createCard(card.name, card.link);
+      cardContainer.addItem(cardElement);
+    });
+  })
+  .catch((err) => {
+    console.log("Error en tarjetas", err);
+  });
 
 const settings = {
   formSelector: ".form",
@@ -22,20 +51,20 @@ const settings = {
   errorClass: "form__input-error_active",
 };
 
-const initialCards = [
+/*const initialCards = [
   { name: "Valle de Cocora", link: valle },
   { name: "Bahía Solano", link: bahia },
   { name: "Caño Cristales", link: cano },
   { name: "Ciudad Perdida", link: ciudad },
   { name: "Parque Nacional de Utría", link: utria },
   { name: "Desierto de la Tatacoa", link: Tatacoa },
-];
+];*/
 
 const popupImage = new PopupWithImage("#popup-image");
 
 const cardContainer = new Section(
   {
-    items: initialCards,
+    /*items: initialCards,*/
     renderer: (item) => {
       const cardElement = createCard(item.name, item.link);
       cardContainer.addItem(cardElement);
@@ -48,10 +77,15 @@ cardContainer.renderer();
 const userInfo = new UserInfo({
   name: ".profile__title",
   job: ".profile__subtitle",
+  avatar: ".profile__image",
 });
 
 const popupProfile = new PopupWithForm("#popup-profile", (inputValues) => {
-  userInfo.setUserInfo(inputValues.name, inputValues.job);
+  userInfo.getUserInfo(
+    inputValues.name,
+    inputValues.job,
+    userInfo.getUserInfo().avatar
+  );
   popupProfile.close();
 });
 

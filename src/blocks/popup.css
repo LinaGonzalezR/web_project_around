@@ -114,6 +114,7 @@
 
 .form__input-valid {
   color: blue;
+  border-bottom-color: 1px solid blue;
 }
 
 .button__form {
