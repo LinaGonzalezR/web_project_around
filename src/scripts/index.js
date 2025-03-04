@@ -6,13 +6,14 @@ import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
 import UserInfo from "./UserInfo.js";
 import API from "./Api.js";
+import PopupWithConfirmation from "./PopupWithConfirmation.js";
 
-import valle from "../images/ValledeCocora.jpg";
+/*import valle from "../images/ValledeCocora.jpg";
 import bahia from "../images/bahia-solano.jpg";
 import cano from "../images/Caño-cristales.jpg";
 import ciudad from "../images/CiudadPerdida.jpg";
 import utria from "../images/parque-nacional-natural-utria.jpg";
-import Tatacoa from "../images/Tatacoa.jpg";
+import Tatacoa from "../images/Tatacoa.jpg";*/
 
 const api = new API("https://around-api.es.tripleten-services.com/v1", {
   authorization: "84c92671-b7c6-44a0-a71f-a5067b81eea7",
@@ -29,14 +30,28 @@ api
     console.log("Error Info Usuario", err);
   });
 
+const cardContainer = new Section(
+  {
+    items: Card,
+    renderer: (item) => {
+      const cardElement = createCard(
+        item.name,
+        item.link,
+        item._id,
+        item.likes,
+        item.ownerId
+      );
+      cardContainer.addItem(cardElement);
+    },
+  },
+  ".card__box"
+);
 api
   .getCards()
   .then((cards) => {
     console.log("Tarjetas Recibidas", cards);
-    cards.forEach((card) => {
-      const cardElement = createCard(card.name, card.link);
-      cardContainer.addItem(cardElement);
-    });
+    cardContainer._items = cards;
+    cardContainer.renderer();
   })
   .catch((err) => {
     console.log("Error en tarjetas", err);
@@ -62,18 +77,6 @@ const settings = {
 
 const popupImage = new PopupWithImage("#popup-image");
 
-const cardContainer = new Section(
-  {
-    /*items: initialCards,*/
-    renderer: (item) => {
-      const cardElement = createCard(item.name, item.link);
-      cardContainer.addItem(cardElement);
-    },
-  },
-  ".card__box"
-);
-cardContainer.renderer();
-
 const userInfo = new UserInfo({
   name: ".profile__title",
   job: ".profile__subtitle",
@@ -81,31 +84,129 @@ const userInfo = new UserInfo({
 });
 
 const popupProfile = new PopupWithForm("#popup-profile", (inputValues) => {
-  userInfo.getUserInfo(
+  console.log(inputValues);
+  const name = inputValues.name;
+  const about = inputValues.about;
+  /*userInfo.setUserInfo(
     inputValues.name,
-    inputValues.job,
+    inputValues.about,
     userInfo.getUserInfo().avatar
-  );
-  popupProfile.close();
+  );*/
+  api
+    .updateUserInfo(name, about)
+    .then((updateData) => {
+      console.log(updateData);
+      userInfo.setUserInfo(
+        updateData.name,
+        updateData.about,
+        updateData.avatar
+      );
+      popupProfile.close();
+    })
+    .catch((err) => {
+      console.log("Error en usuario", err);
+    });
 });
 
 const popupCard = new PopupWithForm("#popup-card", (inputValues) => {
-  const newCard = createCard(
-    inputValues["input-title"],
-    inputValues["input-link"]
-  );
-  cardContainer.addItem(newCard);
-  popupCard.close();
+  console.log("Datos enviados", inputValues);
+  api
+    .createCard(
+      /*inputValues["input-name"], inputValues["input-link"]*/ inputValues.name,
+      inputValues.link
+    )
+    .then((card) => {
+      console.log("Tarjeta Creada", card);
+      const newCard = createCard(
+        card.name,
+        card.link,
+        card._id,
+        card.likes,
+        card.ownerId
+      );
+      cardContainer.addItem(newCard);
+      popupCard.close();
+    })
+    .catch((err) => {
+      console.log("Error en tarjeta", err);
+    });
 });
 
-function createCard(name, link) {
+function createCard(name, link, id, likes, ownerId) {
+  console.log(id);
   console.log("link de la Imagen");
-  const card = new Card(name, link, (name, link) => {
-    popupImage.open(name, link);
-    console.log("abriendo popup con:", name, link);
-  });
+  const card = new Card(
+    name,
+    link,
+    id,
+    likes,
+    ownerId,
+    (name, link) => {
+      popupImage.open(name, link);
+      console.log("abriendo popup con:", name, link);
+    },
+    (cardElement) => {
+      PopupConfirm.open(cardElement, id);
+      api
+        .likeCard(id)
+        .then((data) => {
+          console.log("Like", data);
+        })
+        .catch((err) => {
+          console.log("Error en like", err);
+        });
+    }
+  );
   return card.generateCard();
 }
+
+const profileAvatar = document.querySelector(".profile__image");
+profileAvatar.addEventListener("mouseover", () => {
+  profileAvatar.classList.add("profile__image-hover");
+});
+profileAvatar.addEventListener("mouseout", () => {
+  profileAvatar.classList.remove("profile__image-hover");
+});
+profileAvatar.addEventListener("click", () => {
+  popupAvatar.open();
+});
+
+const popupAvatar = new PopupWithForm("#popup-avatar", (inputValues) => {
+  /*const avatarUrl = inputValues.avatar;*/
+  api
+    .updateProfileAvatar(inputValues.avatar)
+
+    .then((updateData) => {
+      userInfo.setUserInfo(
+        updateData.name,
+        updateData.about,
+        updateData.avatar
+      );
+      popupAvatar.close();
+    })
+    .catch((error) => {
+      console.log("Error al actualizar la foto de perfil", err);
+    });
+});
+
+const PopupConfirm = new PopupWithConfirmation(
+  "#popup__delete",
+  (cardElement, id) => {
+    api
+      .deleteCard(id)
+      .then(() => {
+        cardElement.remove();
+        PopupConfirm.close();
+      })
+      .catch((err) => {
+        console.log("Error al eliminar  tarjeta", err);
+      });
+  }
+);
+
+const avatarForm = document.querySelector("#form-avatar");
+const avatarFormValidation = new FormValidation(avatarForm, settings);
+avatarFormValidation.enableValidation();
 
 const buttonProfile = document.querySelector(".profile__button-small");
 const buttonCard = document.querySelector(".profile__button");
@@ -124,13 +225,15 @@ buttonCard.addEventListener("click", () => {
 
 popupProfile.setEventListeners();
 popupCard.setEventListeners();
-popupImage.setEventListeners();
+/*popupImage.setEventListeners();*/
+popupAvatar.setEventListeners();
+PopupConfirm.setEventListeners();
 
 function setupFormValidations() {
   profileFormValidation.enableValidation();
   cardFormValidation.enableValidation();
 }
-/*setupFormValidations();*/
+setupFormValidations();
 
 const inputs = document.querySelectorAll(".form__input");
 

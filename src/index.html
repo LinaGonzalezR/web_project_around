@@ -18,6 +18,49 @@
           alt="logo alrededor de"
           class="header__logo"
         />
+        <section class="popup popup__delete" id="popup__delete">
+          <div class="popup__container popup__container-delete">
+            <div class="popup__close">
+              <img
+                src="<%=require('./images/CloseIcon.svg')%>"
+                alt="Icono de
+                cerrar ventana"
+                class="popup__image"
+              />
+            </div>
+            <h3 class="form__title">¿Estás seguro?</h3>
+            <button type="submit" class="button__form">Sí</button>
+          </div>
+        </section>
+
+        <section class="popup" id="popup-avatar">
+          <div class="popup__container">
+            <form class="form" name="form-avatar" id="form-avatar" novalidate>
+              <div class="popup__close">
+                <img
+                  src="<%=require('./images/CloseIcon.svg')%>"
+                  alt="Icono de
+                cerrar ventana"
+                  class="popup__image"
+                />
+              </div>
+              <h3 class="form__title">Actualizar Foto</h3>
+              <input
+                type="url"
+                placeholder="Enlace de la nueva imagen"
+                class="form__input"
+                required
+                name="avatar"
+                id="input-avatar"
+                ;
+              />
+              <span class="form__input-error input-avatar-error"></span>
+              <button type="submit" class="button__form button__form_disabled">
+                Guardar
+              </button>
+            </form>
+          </div>
+        </section>
 
         <section class="popup" id="popup-profile">
           <div class="popup__container">
@@ -39,6 +82,8 @@
                 minlength="2"
                 maxlength="40"
                 required
+                name="name"
+                ;
               />
               <span class="form__input-error input-nombre-error"></span>
               <input
@@ -49,6 +94,8 @@
                 minlength="2"
                 maxlength="200"
                 required
+                name="about"
+                ;
               />
               <span class="form__input-error input-mi-error"></span>
               <button type="submit" class="button__form button__form_disabled">
@@ -76,6 +123,7 @@
                 minlength="2"
                 maxlength="30"
                 required
+                name="name"
               />
               <span class="form__input-error input-title-error"></span>
 
@@ -85,6 +133,7 @@
                 id="input-link"
                 class="form__input"
                 required
+                name="link"
               />
               <span class="form__input-error input-link-error"></span>
               <button type="submit" class="button__form button__form_disabled">
@@ -105,11 +154,11 @@
             </button>
           </div>
         </section>
+
         <section class="profile">
           <img
             src="<%=require('./images/Avatar.png')%>"
             alt="Foto Jacques Cousteau"
-            class="profile__image"
             class="profile__image"
           />
           <div class="profile__data">

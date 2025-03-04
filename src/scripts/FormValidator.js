@@ -17,6 +17,7 @@ export default class FormValidation {
     const errorElement = this.formElement.querySelector(
       `.${inputElement.id}-error`
     );
+    if (!errorElement) return;
     inputElement.classList.remove(this.settings.inputErrorClass);
     errorElement.textContent = "";
   }
