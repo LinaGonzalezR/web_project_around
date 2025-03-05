@@ -83,8 +83,20 @@ const userInfo = new UserInfo({
   avatar: ".profile__image",
 });
 
+function toggleButtonLoading(button, isLoading) {
+  if (isLoading) {
+    button.textContent = "Guardando...";
+    button.disabled = true;
+  } else {
+    button.textContent = "Guardar";
+    button.disabled = false;
+  }
+}
+
 const popupProfile = new PopupWithForm("#popup-profile", (inputValues) => {
   console.log(inputValues);
+  const submitButton = document.querySelector("#popup-profile .button__form");
+  toggleButtonLoading(submitButton, true);
   const name = inputValues.name;
   const about = inputValues.about;
   /*userInfo.setUserInfo(
@@ -105,10 +117,15 @@ const popupProfile = new PopupWithForm("#popup-profile", (inputValues) => {
     })
     .catch((err) => {
       console.log("Error en usuario", err);
+    })
+    .finally(() => {
+      toggleButtonLoading(submitButton, false);
     });
 });
 
 const popupCard = new PopupWithForm("#popup-card", (inputValues) => {
+  const submitButton = document.querySelector("#popup-profile .button__form");
+  toggleButtonLoading(submitButton, true);
   console.log("Datos enviados", inputValues);
   api
     .createCard(
@@ -129,6 +146,9 @@ const popupCard = new PopupWithForm("#popup-card", (inputValues) => {
     })
     .catch((err) => {
       console.log("Error en tarjeta", err);
+    })
+    .finally(() => {
+      toggleButtonLoading(submitButton, false);
     });
 });
 
@@ -172,10 +192,11 @@ profileAvatar.addEventListener("click", () => {
 });
 
 const popupAvatar = new PopupWithForm("#popup-avatar", (inputValues) => {
+  const submitButton = document.querySelector("#popup-avatar .button__form");
+  toggleButtonLoading(submitButton, true);
   /*const avatarUrl = inputValues.avatar;*/
   api
     .updateProfileAvatar(inputValues.avatar)
-
     .then((updateData) => {
       userInfo.setUserInfo(
         updateData.name,
@@ -186,6 +207,9 @@ const popupAvatar = new PopupWithForm("#popup-avatar", (inputValues) => {
     })
     .catch((error) => {
       console.log("Error al actualizar la foto de perfil", err);
+    })
+    .finally(() => {
+      toggleButtonLoading(submitButton, false);
     });
 });
 
