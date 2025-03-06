@@ -158,15 +158,14 @@ function createCard(name, link, id, likes, ownerId) {
   const card = new Card(
     name,
     link,
-    id,
-    likes,
-    ownerId,
+
     (name, link) => {
       popupImage.open(name, link);
       console.log("abriendo popup con:", name, link);
     },
     (cardElement) => {
       PopupConfirm.open(cardElement, id);
+
       api
         .likeCard(id)
         .then((data) => {
@@ -175,7 +174,10 @@ function createCard(name, link, id, likes, ownerId) {
         .catch((err) => {
           console.log("Error en like", err);
         });
-    }
+    },
+    id,
+    likes,
+    ownerId
   );
   return card.generateCard();
 }
