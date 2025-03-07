@@ -53,10 +53,8 @@
   background-color: transparent;
 }
 .popup__image-close-icon {
-  position: absolute;
-  top: 300px;
-  right: 410px;
 }
+
 .popup__image {
   width: 40px;
 }
@@ -141,6 +139,10 @@
   opacity: 20;
   color: #cccccc;
   opacity: 0.5;
+}
+
+.popup__content {
+  position: relative;
 }
 
 .popup__container-delete {

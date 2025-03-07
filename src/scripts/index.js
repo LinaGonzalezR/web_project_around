@@ -254,6 +254,7 @@ popupCard.setEventListeners();
 /*popupImage.setEventListeners();*/
 popupAvatar.setEventListeners();
 PopupConfirm.setEventListeners();
+popupImage.setEventListeners();
 
 function setupFormValidations() {
   profileFormValidation.enableValidation();
