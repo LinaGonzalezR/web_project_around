@@ -1,9 +1,19 @@
+import { useState } from "react";
+import Avatar from "./images/Avatar.png";
+import Pen from "./images/Pen.png";
+
+{
+  /*export default function Main() {
+  const [popup, setPopup] = useState(null);
+}*/
+}
+
 const Main = () => {
   return (
     <main className="content">
       <section className="profile">
         <img
-          src="<%=require('./images/Avatar.png')%>"
+          src={Avatar}
           alt="Foto Jacques Cousteau"
           className="profile__image"
         />
@@ -14,7 +24,7 @@ const Main = () => {
 
         <button className="profile__button-small">
           <img
-            src="<%=require('./images/Pen.png')%>"
+            src={Pen}
             alt="imagen de lápiz"
             className="profile__image-small"
           />
@@ -33,4 +43,6 @@ const Main = () => {
   );
 };
 
-export default Main;
+{
+  /*export default Main;*/
+}

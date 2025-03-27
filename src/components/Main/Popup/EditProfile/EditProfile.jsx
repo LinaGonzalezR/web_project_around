@@ -1,3 +1,5 @@
+import CloseIcon from "./images/CloseIcon.svg";
+
 const EditProfile = () => {
   return (
     <section className="popup" id="popup-profile">
@@ -5,7 +7,7 @@ const EditProfile = () => {
         <form className="form" name="form1" id="form1" novalidate>
           <div className="popup__close">
             <img
-              src="<%=require('./images/CloseIcon.svg')%>"
+              src={CloseIcon}
               alt="Icono de cerrar ventana"
               className="popup__image"
             />

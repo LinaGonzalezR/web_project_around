@@ -1,5 +1,3 @@
-import Logo from "../../images/Header.png";
-
 const Header = () => {
   return (
     <header className="header">

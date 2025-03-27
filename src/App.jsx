@@ -1,5 +1,8 @@
 import React from "react";
-import "./index.css";
+{
+  /*import { useState } from "react";*/
+}
+import "./pages/index.css";
 
 /*import Avatar from ".images/Avatar.png";*/
 import Header from "./components/Header/Header";
@@ -11,7 +14,21 @@ import EditAvatar from "./components/Main/Popup/EditAvatar/EditAvatar";
 import EditProfile from "./components/Main/Popup/EditProfile/EditProfile";
 
 function App() {
-  /*const [count, setCount] = useState(0);*/
+    const [popup, setPopup] = useState(initialState: null);
+  const popupEditAvatar = {
+  title: "Editar Avatar",
+  children: <EditAvatar />,
+  }
+
+  const popupEditProfile = {
+    title: "Editar Perfil",
+    children: <EditProfile />,
+    }
+
+    const popupCreateCard = {
+      title: "Nuevo Lugar",
+      children: <NewCard />,
+      }
 
   return (
     <>
@@ -19,18 +36,11 @@ function App() {
         <Header />
         <Main />
         <Footer />
-
-        <Popup title="Editar Perfil">
-          <EditProfile />
+{popup && <Popup title={popup.title}>{popup.children}</Popup>}
+      <Popup title="">
         </Popup>
 
-        <Popup title="Nuevo lugar">
-          <NewCard />
-        </Popup>
-
-        <Popup title="Editar Avatar">
-          <EditAvatar />
-        </Popup>
+       
       </div>
 
       {/*<section className="popup popup__delete" id="popup__delete">

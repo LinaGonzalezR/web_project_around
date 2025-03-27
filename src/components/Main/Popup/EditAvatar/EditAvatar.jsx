@@ -1,3 +1,5 @@
+import Avatar from "./images/Avatar.png";
+
 const EditAvatar = () => {
   return (
     <section className="popup" id="popup-avatar">
