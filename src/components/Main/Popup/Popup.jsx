@@ -4,17 +4,6 @@ export default function Popup(props) {
   return (
     <div className="popup">
       <div className="popup__content">
-        <Popup title="Editar Perfil">
-          <EditProfile />
-        </Popup>
-
-        <Popup title="Nuevo lugar">
-          <NewCard />
-        </Popup>
-
-        <Popup title="Editar Avatar">
-          <EditAvatar />
-        </Popup>
         <button
           aria-label="Close modal"
           className="popup__close"

@@ -7,28 +7,28 @@ import "./pages/index.css";
 /*import Avatar from ".images/Avatar.png";*/
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
-import Footer from "./components/Footer/Footer";
+import Footer from "./components/Footer/Foot0er";
 import Popup from "./components/Main/Popup/Popup";
 import NewCard from "./components/Main/Popup/NewCard/NewCard";
 import EditAvatar from "./components/Main/Popup/EditAvatar/EditAvatar";
 import EditProfile from "./components/Main/Popup/EditProfile/EditProfile";
 
 function App() {
-    const [popup, setPopup] = useState(initialState: null);
+  const [popup, setPopup] = useState(null);
   const popupEditAvatar = {
-  title: "Editar Avatar",
-  children: <EditAvatar />,
-  }
+    title: "Editar Avatar",
+    children: <EditAvatar />,
+  };
 
   const popupEditProfile = {
     title: "Editar Perfil",
     children: <EditProfile />,
-    }
+  };
 
-    const popupCreateCard = {
-      title: "Nuevo Lugar",
-      children: <NewCard />,
-      }
+  const popupCreateCard = {
+    title: "Nuevo Lugar",
+    children: <NewCard />,
+  };
 
   return (
     <>
@@ -36,11 +36,9 @@ function App() {
         <Header />
         <Main />
         <Footer />
-{popup && <Popup title={popup.title}>{popup.children}</Popup>}
-      <Popup title="">
-        </Popup>
-
-       
+        {popup && <Popup title={popup.title}>{popup.children}</Popup>}
+        {/*} <Popup title="">
+        </Popup>*/}
       </div>
 
       {/*<section className="popup popup__delete" id="popup__delete">

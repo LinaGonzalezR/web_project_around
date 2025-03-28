@@ -1,3 +1,4 @@
+import CloseIcon from "./images/CloseIcon.svg";
 const NewCard = () => {
   return (
     <section className="popup popup__card" id="popup-card">
@@ -5,7 +6,7 @@ const NewCard = () => {
         <form className="form" name="form2" id="form2">
           <div className="popup__close">
             <img
-              src="<%=require('./images/CloseIcon.svg')%>"
+              src={CloseIcon}
               alt="Icono de cerrar ventana"
               className="popup__image"
             />
